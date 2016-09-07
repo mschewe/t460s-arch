@@ -1,14 +1,23 @@
-# dotfiles
-A customized user experience for my T460s with Archlinux
+# t460s-arch
+A customized user experience for Lenovo Thinkpad T460s with Archlinux
+
+In this repository I will try guide you through the hussle of the configuration of a T460s running Archlinux and some commonly used software.
+
+# How to use
+
+TODO
+
 
 # Todos
 
+- [ ] laptop configuration
 - [ ] install medium
 - [ ] partition layout
 - [ ] base installation
 - [ ] zsh & uvxt
 - [ ] ssh
 - [ ] ufw
+- [ ] wifi
 - [ ] xserver
 - [ ] slim
 - [ ] i3
@@ -22,6 +31,10 @@ A customized user experience for my T460s with Archlinux
 ## Additional topics
 
 - [ ] full disc encryption
+- [ ] LTE 
+- [ ] power saving
+
+
 
 # Contributing
 
