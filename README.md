@@ -33,6 +33,7 @@ TODO
 - [ ] full disc encryption
 - [ ] LTE 
 - [ ] power saving
+- [ ] security
 
 
 
