@@ -38,4 +38,4 @@ TODO
 
 # Contributing
 
-If you have a similar setup or any advices, please don't hesitate to open an issue to get in touch!
+If you have a similar setup, problems or any advices, please don't hesitate to open an issue to get in touch!
