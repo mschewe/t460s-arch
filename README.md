@@ -10,7 +10,7 @@ TODO
 
 # Todos
 
-- [ ] laptop configuration
+- [ ] [laptop configuration](laptop_configuration)
 - [ ] install medium
 - [ ] partition layout
 - [ ] base installation
