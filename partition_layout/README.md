@@ -1,0 +1,5 @@
+# Partition layout
+
+## UEFI
+
+## LVM
