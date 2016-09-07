@@ -21,12 +21,14 @@ TODO
 - [ ] xserver
 - [ ] slim
 - [ ] i3
+- [ ] xinputs
 - [ ] rbenv
 - [ ] go
 - [ ] postgres
 - [ ] redis
 - [ ] dropbox
 - [ ] common packages
+- [ ] useful scripts
 
 ## Additional topics
 
@@ -34,8 +36,6 @@ TODO
 - [ ] LTE 
 - [ ] power saving
 - [ ] security
-
-
 
 # Contributing
 
