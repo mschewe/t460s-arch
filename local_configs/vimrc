@@ -1,0 +1,256 @@
+" open folds with zo and close with zc
+
+" plugins {{{
+set nocompatible " be iMproved, required
+filetype off     " required
+
+" let Vundle manage Vundle, required
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'Chiel92/vim-autoformat'
+Plugin 'SirVer/ultisnips'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'Xuyuanp/nerdtree-git-plugin'          " git for nerdtree
+Plugin 'ag.vim'
+"Plugin 'c.vim'
+"Plugin 'chrisgillis/vim-bootstrap3-snippets'
+Plugin 'ctrlpvim/ctrlp.vim'                   " Fuzzy search with ctr-p
+Plugin 'dhruvasagar/vim-table-mode'           " ,tm
+"Plugin 'easymotion/vim-easymotion'             " Move arround very fast
+Plugin 'ervandew/supertab'                    " Needed for YouCompleteMe and ultisnips
+Plugin 'fatih/vim-go'                         " Go support
+Plugin 'flazz/vim-colorschemes'               " Almost all colorschemes
+Plugin 'gmarik/Vundle.vim'
+"Plugin 'godlygeek/tabular'                    " Used to align things
+Plugin 'gregsexton/MatchTag'
+Plugin 'honza/vim-snippets'                   " Snippets for ultisnips
+Plugin 'jistr/vim-nerdtree-tabs'              " Auto open nerdtree on all tabs
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'lifepillar/pgsql.vim'                 " postgres
+Plugin 'majutsushi/tagbar'
+Plugin 'mattn/emmet-vim'
+Plugin 'mattn/gist-vim'
+Plugin 'mattn/webapi-vim'                     " Needed for gist-vim
+Plugin 'reedes/vim-colors-pencil'
+"Plugin 'reedes/vim-thematic'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdtree'                  " File explorer
+Plugin 'scrooloose/syntastic'                 " Syntax checking
+Plugin 'suan/vim-instant-markdown'
+Plugin 'thoughtbot/vim-rspec'
+Plugin 'tomasr/molokai'                       " Colorscheme molokai
+Plugin 'tpope/vim-bundler'
+Plugin 'tpope/vim-endwise'                    " Add end to functions
+Plugin 'tpope/vim-fugitive'                   " Git plugin
+Plugin 'tpope/vim-haml'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-surround'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'mtth/scratch.vim'                         " Unobstrusive scratch
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+"}}}
+
+" font, color and tabs {{{
+set antialias
+"set guifont=SourceCodePro\ 10
+"set guifont=Monaco\ 9
+set guifont=DejaVu\ Sans\ Mono\ 12
+colorscheme badwolf
+set background=dark
+syntax on               " enable syntax highlighting
+
+set guioptions-=m   " remove menu bar
+set guioptions-=T   " remove toolbar
+set guioptions-=r   " remove right-hand scroll bar
+set guioptions-=L   " remove left-hand scroll bar
+set showtabline=0
+set guiheadroom=0   " fixes problem with grey space at the bottom
+
+let mapleader=","   " map leader to ,
+
+set expandtab       " use spaces instead of TAB
+set autoindent      " use the ident of the previous line
+set number          " show line numbers
+
+set tabstop=2       " sets the width of a TAB
+set shiftwidth=2    " << >> with is 2
+set softtabstop=2   " sets the width of a TAB
+"}}}
+
+" spellchecking {{{
+set spelllang=en_en
+"}}}
+
+" search and fold {{{
+set hlsearch " Highlights the found word
+set foldmethod=syntax   " fold on {{{ and }}}
+set nofoldenable        "dont fold by default
+set foldlevel=1         "this is just what i use
+"}}}
+
+" pre-save commands {{{
+autocmd BufWritePre * :%s/\s\+$//e           " remove trailing whitespaces
+autocmd BufWritePre * :%s/\($\n\s*\)\+\%$//e " remove empty lines at the end of the file
+"}}}
+
+" airline {{{
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+let g:airline#extensions#tabline#buffer_nr_show = 0
+let g:airline#extensions#tabline#enabled = 1          " use airline as tabs instead of gtk tabs
+let g:airline#extensions#tabline#fnamecollapse = 2
+let g:airline#extensions#tabline#fnametruncate = 16
+let g:airline#extensions#tabline#formatter = 'default'
+let g:airline#extensions#tabline#show_tab_nr = 1
+let g:airline#extensions#tabline#tab_nr_type = 1      " show the tab number
+
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9
+nmap <leader>- <Plug>AirlineSelectPrevTab
+nmap <leader>+ <Plug>AirlineSelectNextTab
+"}}}
+
+" keymappings {{{
+imap jj <Esc> " jj to exit insert mode
+
+" move lines with alt j/k
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+inoremap <A-j> <Esc>:m .+1<CR>==gi
+inoremap <A-k> <Esc>:m .-2<CR>==gi
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
+
+nmap <F3> :Autoformat<CR><CR> " run autoformat
+nmap <F8> :TagbarToggle<CR>   " toggle tagbar
+
+" change window with win k/j/h/l
+nmap <silent> <A-Up>    :wincmd k<CR>
+nmap <silent> <A-Down>  :wincmd j<CR>
+nmap <silent> <A-Left>  :wincmd h<CR>
+nmap <silent> <A-Right> :wincmd l<CR>
+
+" alias w to W
+cnoreabbrev <expr> W ((getcmdtype() is# ':' && getcmdline() is# 'W')?('w'):('W'))
+
+" rspec
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>r :call RunCurrentSpecFile()<CR>
+let g:rspec_command = "!bundle exec rspec --no-color --no-profile {spec}"
+"}}}
+
+" NERDTree {{{
+let NERDTreeIgnore = ['\.o$', '\.lst$', '\.eep$', '\.elf$', '\.hex$', '\.lss$', '\.map$', '\.sym$', '\.au$']
+let NERDTreeChDirMode = 2
+let NERDTreeShowBookmarks = 1
+"let NERDTreeSortOrder = ['*'] " texmate like sorting
+let NERDTreeMinimalUI = 1
+"}}}
+
+" ctrlp {{{
+let g:ctrlp_working_path_mode = 'rw'
+" Ignore some files in ctrlp
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+"}}}
+
+" autoformatting {{{
+autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0 " disable formatting of make files
+" set formatting of c files
+let g:formatdef_clangformat_objc = '"clang-format -style=google"'
+let g:formatprg_args_expr_c = '"--style=java --indent=spaces=4 --break-blocks --pad-oper --align-pointer=type --add-brackets"'
+"}}}
+
+" vim-go {{{
+let $GOPATH = "/home/mschewe/code/go"
+let g:go_bin_path = "/home/mschewe/code/go/bin"
+"autocmd BufWritePost *.go silent :GoImports
+" vim-go: auto import go packages and run lint stuff
+let g:go_fmt_command = "goimports"
+let g:go_metalinter_autosave = 1
+let g:go_auto_type_info = 1
+
+
+" Go key-bindings
+autocmd FileType go nmap <leader>r <Plug>(go-run)
+autocmd FileType go nmap <leader>b <Plug>(go-build)
+autocmd FileType go nmap <leader>t <Plug>(go-test)
+autocmd FileType go nmap <leader>c <Plug>(go-coverage)
+autocmd FileType go nmap <Leader>i <Plug>(go-info)
+
+"}}}
+
+" vim-gist {{{
+let g:gist_post_private = 1 " always post as private
+"}}}
+
+" markdown {{{
+autocmd BufRead,BufNewFile *.md setlocal textwidth=80
+autocmd BufRead,BufNewFile *.md setlocal colorcolumn=80
+autocmd BufRead,BufNewFile *.md setlocal formatoptions+=t
+autocmd BufRead,BufNewFile *.md setlocal spell spelllang=en_en
+let g:instant_markdown_slow = 1
+let g:instant_markdown_autostart = 1
+"}}}
+
+" make YCM compatible with UltiSnips (using supertab) {{{
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" Automatically close scratches
+let g:SuperTabClosePreviewOnPopupClose = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_autoclose_preview_window_after_completion = 1
+
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+"}}}
+
+" thematic {{{
+let g:thematic#themes = {
+\ 'without_lenses': {'colorscheme': 'harlequin',
+\                    'background': 'dark',
+\                    'airline-theme': 'dark',
+\                    'font-size': '22px',
+\                   },
+\ 'pencil_lite':    {'colorscheme': 'pencil',
+\                    'background': 'light',
+\                    'airline-theme': 'light',
+\                   },
+\ 'badwolf':        {'colorscheme': 'badwolf',
+\                    'background': 'dark',
+\                    'airline-theme': 'dark',
+\                    'font-size': '14px',
+\                   }
+\ }
+nnoremap <Leader>T <Plug>ThematicNext<CR> "toggle themes with <leader>T
+"let g:thematic#theme_name = 'badwolf'
+"}}}
+
+" psql {{{
+" ggle themes with ,Tuu
+let g:sql_type_default = 'pgsql'
+noremap <Leader>f <Plug>SQLU_Formatter<CR>
+"}}}
+
+" {{{
+filetype plugin on  " automatically detect filetype
+set modeline        " allows modlines to change settings
+"}}}
+
+" vim: fdm=marker fdl=0 fen
